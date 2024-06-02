@@ -1,0 +1,3 @@
+import { FONTS, COLORS, SIZES, SHADOWS, CONTAINER } from "./theme";
+
+export { FONTS, COLORS, SIZES, SHADOWS, CONTAINER };

@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Inter Bold";
+  src: url("../public/fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter Semibold";
+  src: url("../public/fonts/Inter-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter Regular";
+  src: url("../public/fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter Light";
+  src: url("../public/fonts/Inter-Light.ttf") format("truetype");
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter Regular", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
