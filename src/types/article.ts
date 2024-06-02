@@ -14,7 +14,9 @@ export type TArticle = {
   title: string;
   abstract: string;
   byline: string;
-  media: {
-    "media-metadata": TMediaMetaData[];
-  };
+  media: [
+    {
+      "media-metadata": TMediaMetaData[];
+    }
+  ];
 };

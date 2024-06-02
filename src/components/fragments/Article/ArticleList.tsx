@@ -6,22 +6,32 @@ import { TArticle } from "../../../types/article";
 
 const StyledArticleList = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${SIZES["2xl"]};
+  grid-template-columns: repeat(1, 1fr);
+  gap: ${SIZES["xl"]};
+
+  @media screen and (min-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${SIZES["2xl"]};
+  }
 `;
 
 const ArticleList: React.FC<{ articles: TArticle[] }> = ({ articles }) => {
   if (!articles) {
     return null;
   }
+
+  console.log();
   return (
     <StyledArticleList>
       {articles.map((article) => (
         <ArticleItem
           {...article}
           key={article.id}
-          // image={article.media["media-metadata"][1].url}
-          image={"https://picsum.photos/200/300"}
+          image={
+            article.media.length
+              ? article.media[0]["media-metadata"][0].url
+              : "https://picsum.photos/200/300"
+          }
         />
       ))}
     </StyledArticleList>

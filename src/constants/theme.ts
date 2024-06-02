@@ -38,7 +38,7 @@ export const SHADOWS: Record<string, string> = {
 };
 
 export const CONTAINER = {
-  sm: `${SIZES.xs} ${SIZES.sm}`,
+  sm: `${SIZES.xs} ${SIZES.md}`,
   md: `${SIZES.xs} ${SIZES["3xl"]}`,
   lg: `${SIZES.xs} ${SIZES["8xl"]}`,
 };

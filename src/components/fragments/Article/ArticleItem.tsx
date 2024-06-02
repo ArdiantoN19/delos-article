@@ -6,12 +6,20 @@ import Link from "../../ui/Link";
 import { TArticle } from "../../../types/article";
 
 const StyledImage = styled.img`
-  width: 400px;
-  height: 200px;
-  border-radius: ${SIZES.xs};
+  width: 230px;
+  height: 140px;
   object-fit: cover;
-  box-shadow: ${SHADOWS.md};
+  border-radius: 0.5rem;
+
+  box-shadow: ${SHADOWS.sm};
   display: block;
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+    height: 200px;
+    box-shadow: ${SHADOWS.md};
+    border-radius: ${SIZES.xs};
+  }
 `;
 
 const StyledArticleBody = styled.div`
@@ -19,25 +27,30 @@ const StyledArticleBody = styled.div`
 `;
 
 const StyledArticleTitle = styled(Link)`
-  font-size: ${SIZES.xl};
+  font-size: ${SIZES.md};
   font-family: Inter Semibold;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   padding: 0;
-  margin-block-end: ${SIZES.md};
+  margin-block-end: ${SIZES.xs};
+
+  @media screen and (min-width: 768px) {
+    margin-block-end: ${SIZES.md};
+    font-size: ${SIZES.xl};
+  }
 `;
 
 const StyledArticleTypeWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: ${SIZES.xs};
-  margin-bottom: ${SIZES.sm};
+  margin-bottom: 10px;
 
   & > .article-type,
   & > .article-category {
-    font-size: ${SIZES.xs};
+    font-size: 0.5rem;
   }
 
   & > .article-category {
@@ -46,13 +59,27 @@ const StyledArticleTypeWrapper = styled.div`
     padding: 6px ${SIZES.xs};
     border-radius: ${SIZES.xs};
   }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${SIZES.sm};
+
+    & > .article-type,
+    & > .article-category {
+      font-size: ${SIZES.xs};
+    }
+  }
 `;
 
 const StyledArticleCoins = styled.h3`
-  font-size: ${SIZES["2xl"]};
+  font-size: ${SIZES.lg};
   font-family: Inter Bold;
   color: ${COLORS.orange};
-  margin-bottom: ${SIZES["xl"]};
+  margin-bottom: ${SIZES.xs};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${SIZES["xl"]};
+    font-size: ${SIZES["2xl"]};
+  }
 `;
 
 const StyledArticleFooter = styled.div`
@@ -68,11 +95,18 @@ const StyledArticleInfo = styled.div`
 
   & > .info-author,
   & > .info-published {
-    font-size: ${SIZES.xs};
+    font-size: 0.5rem;
   }
 
   & > .info-published {
     color: ${COLORS.gray};
+  }
+
+  @media screen and (min-width: 768px) {
+    & > .info-author,
+    & > .info-published {
+      font-size: ${SIZES.xs};
+    }
   }
 `;
 

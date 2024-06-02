@@ -5,7 +5,11 @@ import { SIZES } from "../../constants";
 const StyledCard = styled.div`
   width: 100%;
   display: flex;
-  gap: ${SIZES["2xl"]};
+  gap: ${SIZES.md};
+
+  @media screen and (min-width: 768px) {
+    gap: ${SIZES["2xl"]};
+  }
 `;
 
 interface ICard extends HTMLAttributes<HTMLDivElement> {}
