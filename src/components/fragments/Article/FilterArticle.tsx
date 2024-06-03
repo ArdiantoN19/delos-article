@@ -22,7 +22,7 @@ const StyledWrapperFilter = styled.div`
 const FilterValues: string[] = ["all", "emailed", "shared", "viewed"];
 
 const FilterArticle: React.FC = () => {
-  const { setFilteredArticles, setArticles } = useContext(ArticleContext);
+  const { setArticles, setHasLoading } = useContext(ArticleContext);
   const [searchParams, setSearchParams] = useSearchParams({
     filter: FilterValues[0],
   });
@@ -39,14 +39,15 @@ const FilterArticle: React.FC = () => {
   useEffect(() => {
     (async () => {
       if (filter) {
+        setHasLoading(true);
         const articles = await getArticleByFilter(
           filter === "all" ? "emailed" : (filter as TFilter)
         );
-        setFilteredArticles(articles.data);
         setArticles(articles.data);
+        setHasLoading(false);
       }
     })();
-  }, [filter, setFilteredArticles, setArticles]);
+  }, [filter, setArticles, setHasLoading]);
 
   return (
     <StyledWrapperFilter>

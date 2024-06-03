@@ -9,26 +9,25 @@ import { getArticleByFilter } from "../../utils/api";
 
 const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<TArticle[]>([]);
-  const [filteredArticles, setFilteredArticles] = useState<TArticle[]>([]);
   const [data, isLoading, error] = useFetch<TArticle[]>([
     getArticleByFilter("emailed"),
   ]);
+  const [hasLoading, setHasLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setArticles(!isLoading ? data : []);
-    setFilteredArticles(!isLoading ? data : []);
   }, [data, isLoading]);
 
   const value = useMemo(
     () => ({
       articles,
       setArticles,
-      filteredArticles,
-      setFilteredArticles,
       isLoading,
       error,
+      hasLoading,
+      setHasLoading,
     }),
-    [articles, filteredArticles, isLoading, error]
+    [articles, isLoading, error, hasLoading]
   );
 
   return (
