@@ -1,8 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { getLocalStorage } from "../../utils";
 import DetailArticle from "../../components/fragments/DetailArticle";
 import { useParams } from "react-router-dom";
 import { TArticle } from "../../types/article";
+import useFirstRender from "../../hooks/useFirstRender";
 
 const DetailArticlePage: React.FC = () => {
   const articles: TArticle[] = getLocalStorage("articles");
@@ -11,7 +18,7 @@ const DetailArticlePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { id } = useParams();
 
-  useEffect(() => {
+  const findArticle = useCallback(() => {
     const findIndexArticle = articles.findIndex(
       (article) => article.id === Number(id)
     );
@@ -20,7 +27,9 @@ const DetailArticlePage: React.FC = () => {
     }
     setArticle(articles[findIndexArticle]);
     setIsLoading(false);
-  }, [id]);
+  }, [id, articles]);
+
+  useFirstRender(findArticle);
 
   if (error) {
     return <p>{error}</p>;
