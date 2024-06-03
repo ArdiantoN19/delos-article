@@ -10,7 +10,7 @@ const StyledNavMenu = styled.div<{ $isShow: boolean }>`
   gap: ${SIZES.xs};
   align-items: center;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     position: fixed;
     top: calc(${SIZES["6xl"]} + 8px);
     right: ${(props) => (props.$isShow ? 0 : "-100%")};

@@ -14,11 +14,17 @@ const StyledImage = styled.img`
   box-shadow: ${SHADOWS.sm};
   display: block;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     width: 400px;
     height: 200px;
     box-shadow: ${SHADOWS.md};
     border-radius: ${SIZES.xs};
+  }
+
+  @media screen and (min-width: 1023px and max-width: 1200px) {
+    width: 230px;
+    height: 140px;
+    border-radius: 0.5rem;
   }
 `;
 
@@ -36,9 +42,14 @@ const StyledArticleTitle = styled(Link)`
   padding: 0;
   margin-block-end: ${SIZES.xs};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     margin-block-end: ${SIZES.md};
     font-size: ${SIZES.xl};
+  }
+
+  @media screen and (min-width: 1023px and max-width: 1200px) {
+    margin-block-end: ${SIZES.xs};
+    font-size: ${SIZES.md};
   }
 `;
 
@@ -60,12 +71,20 @@ const StyledArticleTypeWrapper = styled.div`
     border-radius: ${SIZES.xs};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     margin-bottom: ${SIZES.sm};
 
     & > .article-type,
     & > .article-category {
       font-size: ${SIZES.xs};
+    }
+  }
+
+  @media screen and (min-width: 1023px and max-width: 1200px) {
+    margin-bottom: 10px;
+    & > .article-type,
+    & > .article-category {
+      font-size: 0.5rem;
     }
   }
 `;
@@ -76,7 +95,7 @@ const StyledArticleCoins = styled.h3`
   color: ${COLORS.orange};
   margin-bottom: ${SIZES.xs};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     margin-bottom: ${SIZES["xl"]};
     font-size: ${SIZES["2xl"]};
   }
@@ -102,10 +121,17 @@ const StyledArticleInfo = styled.div`
     color: ${COLORS.gray};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     & > .info-author,
     & > .info-published {
       font-size: ${SIZES.xs};
+    }
+  }
+
+  @media screen and (min-width: 1023px and max-width: 1200px) {
+    & > .info-author,
+    & > .info-published {
+      font-size: 0.5rem;
     }
   }
 `;

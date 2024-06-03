@@ -12,6 +12,10 @@ const StyledContainer = styled.div`
   @media screen and (min-width: 1024px) {
     padding: ${CONTAINER.lg};
   }
+
+  @media screen and (min-width: 1200px) {
+    padding: ${CONTAINER.xl};
+  }
 `;
 
 interface IContainer extends HTMLAttributes<HTMLDivElement> {}

@@ -10,7 +10,7 @@ const StyledButton = styled.button.attrs<{
   type: props.$type || "button",
 }))`
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: ${SIZES.sm};
   border-radius: ${SIZES.xs};
   border: 1px solid #ccc;
   outline: none;
