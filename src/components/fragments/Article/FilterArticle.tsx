@@ -1,9 +1,12 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { SIZES } from "../../../constants";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
 import { createObjQuery } from "../../../utils";
+import ArticleContext from "../../../contexts/Article";
+import { getArticleByFilter } from "../../../utils/api";
+import { TFilter } from "../../../types/api";
 
 const StyledWrapperFilter = styled.div`
     display: flex;
@@ -16,13 +19,15 @@ const StyledWrapperFilter = styled.div`
     }
 `;
 
-const FilterValues = ["all", "emailed", "shared", "viewed"];
+const FilterValues: string[] = ["all", "emailed", "shared", "viewed"];
 
 const FilterArticle: React.FC = () => {
+  const { setFilteredArticles, setArticles } = useContext(ArticleContext);
   const [searchParams, setSearchParams] = useSearchParams({
     filter: FilterValues[0],
   });
   const queryParams = createObjQuery(searchParams);
+  const filter = searchParams.get("filter");
 
   const onFilterHandler = useCallback(
     (filter: string) => {
@@ -30,6 +35,18 @@ const FilterArticle: React.FC = () => {
     },
     [setSearchParams, queryParams]
   );
+
+  useEffect(() => {
+    (async () => {
+      if (filter) {
+        const articles = await getArticleByFilter(
+          filter === "all" ? "emailed" : (filter as TFilter)
+        );
+        setFilteredArticles(articles.data);
+        setArticles(articles.data);
+      }
+    })();
+  }, [filter, setFilteredArticles, setArticles]);
 
   return (
     <StyledWrapperFilter>

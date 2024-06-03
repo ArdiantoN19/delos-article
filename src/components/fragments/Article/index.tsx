@@ -1,10 +1,9 @@
-import React from "react";
-import useFetch from "../../../hooks/useFetch";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { SIZES } from "../../../constants";
-import { TArticle } from "../../../types/article";
 import FilterArticle from "./FilterArticle";
 import ArticleList from "./ArticleList";
+import ArticleContext from "../../../contexts/Article";
 
 const StyledArticle = styled.div`
   margin-bottom: ${SIZES["3xl"]};
@@ -22,14 +21,18 @@ const StyledArticleTitle = styled.h2`
 `;
 
 const Article: React.FC = () => {
-  const [data, isLoading, error] = useFetch<TArticle[]>("/emailed/7.json");
+  const { filteredArticles, isLoading, error } = useContext(ArticleContext);
 
   return (
     <StyledArticle id="article">
       <StyledArticleTitle>Articles</StyledArticleTitle>
       <FilterArticle />
       {error && <div>{error}</div>}
-      {isLoading ? <div>Loading...</div> : <ArticleList articles={data} />}
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <ArticleList articles={filteredArticles} />
+      )}
     </StyledArticle>
   );
 };

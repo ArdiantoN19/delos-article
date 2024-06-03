@@ -20,13 +20,17 @@ const ArticleList: React.FC<{ articles: TArticle[] }> = ({ articles }) => {
     return null;
   }
 
+  if (!articles.length) {
+    return <div>No articles found</div>;
+  }
+
   console.log();
   return (
     <StyledArticleList>
-      {articles.map((article) => (
+      {articles.map((article, index) => (
         <ArticleItem
           {...article}
-          key={article.id}
+          key={article.id + index}
           image={
             article.media.length
               ? article.media[0]["media-metadata"][0].url

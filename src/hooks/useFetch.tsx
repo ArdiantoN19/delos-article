@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { IResponseApi } from "../types/api";
 
-function useFetch<T>(url: string): [T, boolean, string] {
-  const [data, setData] = useState<T>();
+function useFetch<T>(
+  promises: Promise<IResponseApi<T>>[]
+): [T, boolean, string] {
+  const [data, setData] = useState<T>([] as T);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -9,21 +12,24 @@ function useFetch<T>(url: string): [T, boolean, string] {
     (async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_NYT_API_BASE_URL}${url}?api-key=${
-            import.meta.env.VITE_NYT_API_KEY
-          }`
-        );
-        const responseJson = await response.json();
-        setData(responseJson.results);
+        const responses = await Promise.all(promises);
+        const responseJson = responses.reduce((currValue, result) => {
+          if (result.status !== "success") {
+            throw new Error(result.error);
+          }
+          currValue = [...currValue, ...(result.data as T[])];
+          return currValue;
+        }, [] as T[]);
+
+        setData(responseJson as T);
       } catch (error) {
         setError("Something went wrong");
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [url]);
+  }, []);
 
-  return [data as T, isLoading, error];
+  return [data, isLoading, error];
 }
 export default useFetch;
