@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import Card from "../../ui/Card";
 import { COLORS, SHADOWS, SIZES } from "../../../constants";
 import Link from "../../ui/Link";
 import { TArticle } from "../../../types/article";
+import { dayFormatter, generateCoins } from "../../../utils";
 
 const StyledImage = styled.img`
   width: 230px;
@@ -136,7 +137,7 @@ const StyledArticleInfo = styled.div`
   }
 `;
 
-interface IArticleItem extends Partial<TArticle> {
+interface IArticleItem extends TArticle {
   image: string;
 }
 
@@ -149,6 +150,10 @@ const ArticleItem: React.FC<IArticleItem> = ({
   type,
   section,
 }) => {
+  const coins = useMemo(
+    () => generateCoins(dayFormatter(published_date)),
+    [published_date]
+  );
   return (
     <Card>
       <StyledImage src={image} alt={title} />
@@ -158,14 +163,18 @@ const ArticleItem: React.FC<IArticleItem> = ({
           <div className="article-category">{section}</div>
         </StyledArticleTypeWrapper>
         <StyledArticleTitle to={`/details/${id}`}>{title}</StyledArticleTitle>
-        <StyledArticleCoins>30.000 coins</StyledArticleCoins>
+        <StyledArticleCoins>
+          {coins === 0 ? "Free" : `${coins} Coins`}
+        </StyledArticleCoins>
         <StyledArticleFooter>
           <StyledArticleInfo>
             <h6 className="info-author">
               by {byline?.split(",")[0].replace("By", "")}
             </h6>
             <p className="info-published">⁕</p>
-            <p className="info-published">{published_date}</p>
+            <p className="info-published">
+              {dayFormatter(published_date)} days ago
+            </p>
           </StyledArticleInfo>
         </StyledArticleFooter>
       </StyledArticleBody>

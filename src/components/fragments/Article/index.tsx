@@ -6,6 +6,10 @@ import { TArticle } from "../../../types/article";
 import FilterArticle from "./FilterArticle";
 import ArticleList from "./ArticleList";
 
+const StyledArticle = styled.div`
+  margin-bottom: ${SIZES["3xl"]};
+`;
+
 const StyledArticleTitle = styled.h2`
   font-family: Inter Semibold;
   font-size: ${SIZES["3xl"]};
@@ -18,15 +22,15 @@ const StyledArticleTitle = styled.h2`
 `;
 
 const Article: React.FC = () => {
-  const [data, isLoading, error] = useFetch<TArticle[]>("/emailed/30.json");
+  const [data, isLoading, error] = useFetch<TArticle[]>("/emailed/7.json");
 
   return (
-    <div id="article">
+    <StyledArticle id="article">
       <StyledArticleTitle>Articles</StyledArticleTitle>
       <FilterArticle />
       {error && <div>{error}</div>}
       {isLoading ? <div>Loading...</div> : <ArticleList articles={data} />}
-    </div>
+    </StyledArticle>
   );
 };
 

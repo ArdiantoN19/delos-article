@@ -30,7 +30,7 @@ const ArticleList: React.FC<{ articles: TArticle[] }> = ({ articles }) => {
           image={
             article.media.length
               ? article.media[0]["media-metadata"][0].url
-              : "https://picsum.photos/200/300"
+              : "/images/default-image.png"
           }
         />
       ))}
