@@ -5,12 +5,14 @@ import { COLORS, SHADOWS, SIZES } from "../../../constants";
 import Link from "../../ui/Link";
 import { TArticle } from "../../../types/article";
 import { dayFormatter, generateCoins } from "../../../utils";
+import Badge from "../../ui/Badge";
 
 const StyledImage = styled.img`
   width: 230px;
   height: 140px;
   object-fit: cover;
   border-radius: 0.5rem;
+  background-color: ${COLORS.gray};
 
   box-shadow: ${SHADOWS.sm};
   display: block;
@@ -60,31 +62,21 @@ const StyledArticleTypeWrapper = styled.div`
   gap: ${SIZES.xs};
   margin-bottom: 10px;
 
-  & > .article-type,
-  & > .article-category {
+  & > .article-type {
     font-size: 0.5rem;
-  }
-
-  & > .article-category {
-    background-color: ${COLORS.orange};
-    color: ${COLORS.primary};
-    padding: 6px ${SIZES.xs};
-    border-radius: ${SIZES.xs};
   }
 
   @media screen and (min-width: 1200px) {
     margin-bottom: ${SIZES.sm};
 
-    & > .article-type,
-    & > .article-category {
+    & > .article-type {
       font-size: ${SIZES.xs};
     }
   }
 
   @media screen and (min-width: 1023px and max-width: 1200px) {
     margin-bottom: 10px;
-    & > .article-type,
-    & > .article-category {
+    & > .article-type {
       font-size: 0.5rem;
     }
   }
@@ -159,18 +151,15 @@ const ArticleItem: React.FC<IArticleItem> = ({
       <StyledImage src={image} alt={title} />
       <StyledArticleBody>
         <StyledArticleTypeWrapper>
-          <h5 className="article-type">{type}</h5> |
-          <div className="article-category">{section}</div>
+          <h5 className="article-type">{type}</h5> |<Badge>{section}</Badge>
         </StyledArticleTypeWrapper>
-        <StyledArticleTitle to={`/details/${id}`}>{title}</StyledArticleTitle>
+        <StyledArticleTitle to={`/detail/${id}`}>{title}</StyledArticleTitle>
         <StyledArticleCoins>
           {coins === 0 ? "Free" : `${coins} Coins`}
         </StyledArticleCoins>
         <StyledArticleFooter>
           <StyledArticleInfo>
-            <h6 className="info-author">
-              by {byline?.split(",")[0].replace("By", "")}
-            </h6>
+            <h6 className="info-author">{byline?.split(",")[0]}</h6>
             <p className="info-published">⁕</p>
             <p className="info-published">
               {dayFormatter(published_date)} days ago

@@ -6,6 +6,7 @@ import ArticleContext from "../../contexts/Article";
 import { TArticle } from "../../types/article";
 import useFetch from "../../hooks/useFetch";
 import { getArticleByFilter } from "../../utils/api";
+import { setLocalStorage } from "../../utils";
 
 const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<TArticle[]>([]);
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     setArticles(!isLoading ? data : []);
+    setLocalStorage<TArticle[]>("articles", !isLoading ? data : []);
   }, [data, isLoading]);
 
   const value = useMemo(

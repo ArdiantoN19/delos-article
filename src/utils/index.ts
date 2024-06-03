@@ -20,3 +20,24 @@ export const generateCoins = (dayDifference: number) => {
   }
   return 50000;
 };
+
+const checkSupportLocalStorage = () => {
+  if (typeof window === "undefined" || !window.localStorage) {
+    console.log("local storage not supported");
+    return false;
+  }
+};
+
+export const getLocalStorage = (key: string) => {
+  checkSupportLocalStorage();
+  const data = localStorage.getItem(key);
+  if (!data) {
+    return null;
+  }
+  return JSON.parse(data);
+};
+
+export function setLocalStorage<T>(key: string, value: T) {
+  checkSupportLocalStorage();
+  localStorage.setItem(key, JSON.stringify(value));
+}
