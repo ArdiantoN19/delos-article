@@ -18,7 +18,7 @@ const Article: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [datas, setDatas] = useState<TArticle[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const [offset, setOffset] = useState<number>(2);
+  const [offset, setOffset] = useState<number>(1);
   const search = searchParams.get("search") || "";
 
   useEffect(() => {
@@ -26,9 +26,12 @@ const Article: React.FC = () => {
       const result = showArticles(articles);
       setDatas(result);
     }
-    setOffset(2);
-    setHasMore(true);
   }, [articles, search]);
+
+  useEffect(() => {
+    search ? setHasMore(false) : setHasMore(true);
+    setOffset(1);
+  }, [search, articles]);
 
   useEffect(() => {
     if (search) {
@@ -45,18 +48,20 @@ const Article: React.FC = () => {
   }, [articles, search]);
 
   const showMoreData = useCallback(() => {
-    const result = showArticles(localArticles, offset);
-    result.length > 0 ? setHasMore(true) : setHasMore(false);
-    setDatas((prev) => [...prev, ...result]);
-    setOffset((prev) => prev + 1);
-  }, [offset]);
+    if (!search) {
+      const result = showArticles(localArticles, offset);
+      result.length > 0 ? setHasMore(true) : setHasMore(false);
+      setDatas((prev) => [...prev, ...result]);
+      setOffset((prev) => prev + 1);
+    }
+  }, [offset, search]);
 
   return (
     <InfiniteScroll
       dataLength={datas.length}
       hasMore={hasMore}
       next={showMoreData}
-      loader={<h4>Loading...</h4>}
+      loader={<p>Loading...</p>}
     >
       <StyledArticle.StyledArticle id="article">
         <StyledArticle.StyledArticleTitle>
