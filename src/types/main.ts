@@ -1,4 +1,5 @@
-export interface IDataDelos<T> {
+export interface IDataDelos<TMyArticle, TLuckyDraw> {
   coins: number;
-  myArticles: T[];
+  myArticles: TMyArticle[];
+  luckyDraw: TLuckyDraw;
 }

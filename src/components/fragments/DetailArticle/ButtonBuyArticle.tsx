@@ -27,6 +27,7 @@ const ButtonBuyArticle: React.FC<IButtonBuyArticle> = ({ url, price, id }) => {
       delosService.addMyArticle(payload);
 
       setDataDelos((prev) => ({
+        ...prev,
         coins: prev.coins - price,
         myArticles: [...prev.myArticles, { id, isFree: price === 0 }],
       }));

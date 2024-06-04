@@ -4,18 +4,25 @@ import { Outlet } from "react-router-dom";
 import MainContext from "../../contexts/Main";
 import { IDataDelos } from "../../types/main";
 import delosService from "../../services";
-import { TMyArticle } from "../../types/service";
+import { TLuckyDraw, TMyArticle } from "../../types/service";
 
 const MainLayout: React.FC = () => {
-  const [dataDelos, setDataDelos] = useState<IDataDelos<TMyArticle>>({
+  const [dataDelos, setDataDelos] = useState<
+    IDataDelos<TMyArticle, TLuckyDraw>
+  >({
     coins: 0,
     myArticles: [],
+    luckyDraw: {
+      tickets: 0,
+      logs: [],
+    },
   });
 
   const value = useMemo(() => ({ dataDelos, setDataDelos }), [dataDelos]);
 
   useEffect(() => {
-    const localDataDelos: IDataDelos<TMyArticle> = delosService.getDataDelos();
+    const localDataDelos: IDataDelos<TMyArticle, TLuckyDraw> =
+      delosService.getDataDelos();
     setDataDelos(localDataDelos);
   }, []);
 

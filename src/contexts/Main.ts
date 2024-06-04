@@ -1,16 +1,22 @@
 import React, { createContext } from "react";
 import { IDataDelos } from "../types/main";
-import { TMyArticle } from "../types/service";
+import { TLuckyDraw, TMyArticle } from "../types/service";
 
-interface IMainProps<T> {
-  dataDelos: IDataDelos<T>;
-  setDataDelos: React.Dispatch<React.SetStateAction<IDataDelos<T>>>;
+interface IMainProps<TMyArticle, TLuckyDraw> {
+  dataDelos: IDataDelos<TMyArticle, TLuckyDraw>;
+  setDataDelos: React.Dispatch<
+    React.SetStateAction<IDataDelos<TMyArticle, TLuckyDraw>>
+  >;
 }
 
-const MainContext = createContext<IMainProps<TMyArticle>>({
+const MainContext = createContext<IMainProps<TMyArticle, TLuckyDraw>>({
   dataDelos: {
     coins: 0,
     myArticles: [],
+    luckyDraw: {
+      tickets: 0,
+      logs: [],
+    },
   },
   setDataDelos: () => {},
 });

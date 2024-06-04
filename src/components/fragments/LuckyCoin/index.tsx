@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "../../ui/Container";
 import { StyledLuckyCoin } from "./styles";
 import ButtonBuyTicket from "./ButtonBuyTicket";
+import MainContext from "../../../contexts/Main";
+import ButtonLuckyDraw from "./ButtonLuckyDraw";
 
 const LuckyCoin: React.FC = () => {
+  const { dataDelos } = useContext(MainContext);
+
   return (
     <Container>
       <StyledLuckyCoin.StyledLuckyCoinHeader>
@@ -13,6 +17,10 @@ const LuckyCoin: React.FC = () => {
         </div>
         <ButtonBuyTicket />
       </StyledLuckyCoin.StyledLuckyCoinHeader>
+      <StyledLuckyCoin.StyledLuckyCoinBody>
+        <h4 className="ticket">Your Tickets: {dataDelos.luckyDraw.tickets}</h4>
+        <ButtonLuckyDraw />
+      </StyledLuckyCoin.StyledLuckyCoinBody>
     </Container>
   );
 };

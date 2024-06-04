@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { IResponseApi } from "../types/api";
 import useFirstRender from "./useFirstRender";
 

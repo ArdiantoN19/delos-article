@@ -1,5 +1,5 @@
 import React, { AnchorHTMLAttributes } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { COLORS, SIZES } from "../../constants";
 import { ArrowDown } from "@phosphor-icons/react";
 

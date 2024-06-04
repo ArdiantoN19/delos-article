@@ -2,6 +2,15 @@ export type TMyArticle = {
   id: number;
   isFree: boolean;
 };
+type TLog = {
+  time: Date;
+  coin: number;
+};
+
+export type TLuckyDraw = {
+  tickets: number;
+  logs: TLog[];
+};
 
 export type TAddMyArticle = {
   id: number;
