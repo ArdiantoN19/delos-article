@@ -21,13 +21,14 @@ const StyledNavMenu = styled.div<{ $isShow: boolean }>`
     align-items: start;
     gap: 0;
     z-index: 100;
+    padding-left: ${SIZES.xs};
     background-color: ${COLORS.primary};
     transition: right 0.125s ease-in-out;
 
     &::before {
       content: "";
       top: calc(${SIZES["6xl"]} + 8px);
-      left: 0;
+      left: ${(props) => (props.$isShow ? 0 : "-100%")};
       width: 30%;
       position: fixed;
       background: rgba(0, 0, 0, 0.6);

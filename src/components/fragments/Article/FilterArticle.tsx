@@ -11,14 +11,14 @@ import delosService from "../../../services";
 import { TArticle } from "../../../types/article";
 
 const StyledWrapperFilter = styled.div`
-    display: flex;
-    align-items-center;
-    gap: ${SIZES.xs};
-    margin-bottom: ${SIZES["xl"]};
-    
-    @media screen and (min-width: 768px) {
-        margin-bottom: ${SIZES["3xl"]};
-    }
+  display: flex;
+  align-items: center;
+  gap: ${SIZES.xs};
+  margin-bottom: ${SIZES["xl"]};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${SIZES["3xl"]};
+  }
 `;
 
 const FilterValues: string[] = ["all", "emailed", "shared", "viewed"];

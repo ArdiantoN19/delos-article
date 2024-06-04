@@ -17,6 +17,7 @@ const StyledButton = styled.button.attrs<{
   background: transparent;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
+  min-width: 70px;
 
   &:hover,
   &.active {
