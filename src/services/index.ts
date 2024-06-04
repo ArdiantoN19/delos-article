@@ -2,6 +2,7 @@ import { TArticle } from "../types/article";
 import {
   IDelosServiceService,
   TAddMyArticle,
+  TLog,
   TLuckyDraw,
   TMyArticle,
 } from "../types/service";
@@ -85,6 +86,14 @@ class DelosService implements IDelosServiceService<TArticle> {
     const dataDelos = this.getDataDelos();
     dataDelos.coins -= price;
     dataDelos.luckyDraw.tickets += tickets;
+    setLocalStorage(this.VITE_MAIN_DELOS_STORAGE_KEY, dataDelos);
+  }
+
+  addLog(coins: number, log: TLog) {
+    const dataDelos = this.getDataDelos();
+    dataDelos.coins = coins;
+    dataDelos.luckyDraw.tickets -= 1;
+    dataDelos.luckyDraw.logs = [...dataDelos.luckyDraw.logs, log];
     setLocalStorage(this.VITE_MAIN_DELOS_STORAGE_KEY, dataDelos);
   }
 }

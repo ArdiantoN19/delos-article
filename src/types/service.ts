@@ -2,9 +2,16 @@ export type TMyArticle = {
   id: number;
   isFree: boolean;
 };
-type TLog = {
-  time: Date;
-  coin: number;
+
+export type TResultLog = {
+  isLucky: boolean;
+  isAvatar: boolean;
+  value: number | string;
+};
+
+export type TLog = {
+  time: string;
+  result: TResultLog;
 };
 
 export type TLuckyDraw = {

@@ -1,3 +1,6 @@
+import delosService from "../services";
+import { TLog, TResultLog } from "../types/service";
+
 export const createObjQuery = (searchParams: URLSearchParams) => {
   return Object.fromEntries(searchParams.entries());
 };
@@ -50,4 +53,58 @@ export const showArticles = <T>(
   const copyArticles = [...articles];
   const startIndex: number = offset * limit;
   return copyArticles.slice(startIndex, startIndex + limit);
+};
+
+const generateRandomNumber = (max: number = 100) => {
+  return Math.floor(Math.random() * max) + 1;
+};
+
+const generateRandomString = () => {
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
+};
+
+const generateRandomAvatar = () => {
+  const randomString = generateRandomString();
+  return `${import.meta.env.VITE_AVATAR_API_URL}?seed=${randomString}`;
+};
+
+const checkIsGetHighLuckyValue = () => {
+  const dataDelos = delosService.getDataDelos();
+  return dataDelos.luckyDraw.logs.some((log: TLog) => {
+    return log.result.value === 50000;
+  });
+};
+
+export const getLuckyDraw = (): TResultLog => {
+  const isGetHighLuckyValue = checkIsGetHighLuckyValue();
+  const luckyValue: Record<string, number> = {
+    "85": 50000,
+  };
+
+  const randomValue = generateRandomNumber();
+
+  if (randomValue % 10 === 0) {
+    return {
+      isLucky: true,
+      isAvatar: false,
+      value: 20000,
+    };
+  }
+
+  if (randomValue % 13 === 0) {
+    return { isLucky: true, isAvatar: true, value: generateRandomAvatar() };
+  }
+
+  if (!luckyValue[String(randomValue)] || isGetHighLuckyValue) {
+    return { isLucky: false, isAvatar: false, value: "Try Again" };
+  }
+
+  return {
+    isLucky: true,
+    isAvatar: false,
+    value: luckyValue[String(randomValue)],
+  };
 };

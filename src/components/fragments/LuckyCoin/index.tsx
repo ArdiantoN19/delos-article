@@ -14,6 +14,9 @@ const LuckyCoin: React.FC = () => {
         <div>
           <h3 className="title">Lucky Draw</h3>
           <p>50.000 coins for 3 tickets</p>
+          <p className="prize">
+            Prize: <strong>50.000, 20.000, try again, avatar</strong>
+          </p>
         </div>
         <ButtonBuyTicket />
       </StyledLuckyCoin.StyledLuckyCoinHeader>
