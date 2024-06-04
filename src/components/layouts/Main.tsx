@@ -3,16 +3,20 @@ import Navbar from "../fragments/Navbar";
 import { Outlet } from "react-router-dom";
 import MainContext from "../../contexts/Main";
 import { IDataDelos } from "../../types/main";
-import { getDataDelos } from "../../services";
+import delosService from "../../services";
+import { TMyArticle } from "../../types/service";
 
 const MainLayout: React.FC = () => {
-  const [coins, setCoins] = useState<number>(0);
+  const [dataDelos, setDataDelos] = useState<IDataDelos<TMyArticle>>({
+    coins: 0,
+    myArticles: [],
+  });
 
-  const value = useMemo(() => ({ coins, setCoins }), [coins]);
+  const value = useMemo(() => ({ dataDelos, setDataDelos }), [dataDelos]);
 
   useEffect(() => {
-    const dataDelos: IDataDelos<any> = getDataDelos();
-    setCoins(dataDelos.coins);
+    const localDataDelos: IDataDelos<TMyArticle> = delosService.getDataDelos();
+    setDataDelos(localDataDelos);
   }, []);
 
   return (

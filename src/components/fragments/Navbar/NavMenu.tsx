@@ -58,7 +58,7 @@ const StyledCoins = styled.div`
 `;
 
 const NavMenu: React.FC = () => {
-  const { coins } = useContext(MainContext);
+  const { dataDelos } = useContext(MainContext);
 
   const [isShow, setIsShow] = React.useState<boolean>(false);
   const onIsShowHandler = () => {
@@ -72,7 +72,7 @@ const NavMenu: React.FC = () => {
         <Link to="/lucky">Lucky</Link>
         <StyledCoins>
           <Coin size={24} />
-          {coins}
+          {dataDelos.coins}
         </StyledCoins>
       </StyledNavMenu>
       <StyledNavToggler onClick={onIsShowHandler}>

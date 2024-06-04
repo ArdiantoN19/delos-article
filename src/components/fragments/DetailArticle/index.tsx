@@ -104,6 +104,7 @@ const DetailArticle: React.FC<IDetailArticle> = ({
   byline,
   published_date,
   abstract,
+  url,
 }) => {
   const coins = useMemo(
     () => generateCoins(dayFormatter(published_date)),
@@ -138,7 +139,7 @@ const DetailArticle: React.FC<IDetailArticle> = ({
             </div>
             <h4 className="coins">{coins === 0 ? "Free" : `${coins} Coins`}</h4>
           </StyledDetailArticleBodyInfo>
-          <ButtonBuyArticle price={coins} id={id} />
+          <ButtonBuyArticle price={coins} id={id} url={url} />
         </StyledDetailArticleBodyInfoWrapper>
         <StyledDetailArticleBodyDescription>
           {abstract}

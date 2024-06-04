@@ -1,23 +1,10 @@
 import { TArticle } from "../types/article";
-import { TAddMyArticle } from "../types/service";
+import {
+  IDelosServiceService,
+  TAddMyArticle,
+  TMyArticle,
+} from "../types/service";
 import { getLocalStorage, setLocalStorage } from "../utils";
-
-const initialDelosData = {
-  coins: 100000,
-  myArticles: [],
-};
-
-export const setInitialDataDelos = () => {
-  setLocalStorage("delos", initialDelosData);
-};
-
-export const getDataDelos = () => {
-  const datas = getLocalStorage("delos");
-  if (!datas) {
-    setInitialDataDelos();
-  }
-  return datas;
-};
 
 const concatArticlesWithoutDuplicates = (
   article1: TArticle[],
@@ -36,21 +23,50 @@ const concatArticlesWithoutDuplicates = (
   return result;
 };
 
-export const addArticles = (articles: TArticle[]) => {
-  const localArticles: TArticle[] | null = getLocalStorage("articles");
+class DelosService implements IDelosServiceService<TArticle> {
+  private coins: number;
+  private myArticles: TMyArticle[];
 
-  if (!localArticles) {
-    setLocalStorage<TArticle[]>("articles", articles);
-    return;
+  constructor() {
+    this.coins = 100000;
+    this.myArticles = [];
   }
 
-  const result = concatArticlesWithoutDuplicates(localArticles, articles);
-  setLocalStorage("articles", result);
-};
+  setInitialDataDelos() {
+    const initialDataDelos = {
+      coins: this.coins,
+      myArticles: this.myArticles,
+    };
+    setLocalStorage("delos", initialDataDelos);
+  }
 
-export const addMyArticle = ({ id, isFree, price }: TAddMyArticle) => {
-  const dataDelos = getDataDelos();
-  dataDelos.coins = dataDelos.coins - price;
-  dataDelos.myArticles = [...dataDelos.myArticles, { id, isFree }];
-  setLocalStorage("delos", dataDelos);
-};
+  getDataDelos() {
+    const datas = getLocalStorage("delos");
+    if (!datas) {
+      this.setInitialDataDelos();
+    }
+    return datas;
+  }
+
+  addArticles(articles: TArticle[]) {
+    const localArticles: TArticle[] | null = getLocalStorage("articles");
+
+    if (!localArticles) {
+      setLocalStorage<TArticle[]>("articles", articles);
+      return;
+    }
+
+    const result = concatArticlesWithoutDuplicates(localArticles, articles);
+    setLocalStorage("articles", result);
+  }
+
+  addMyArticle({ id, isFree, price }: TAddMyArticle) {
+    const dataDelos = this.getDataDelos();
+    dataDelos.coins = dataDelos.coins - price;
+    dataDelos.myArticles = [...dataDelos.myArticles, { id, isFree }];
+    setLocalStorage("delos", dataDelos);
+  }
+}
+
+const delosService = new DelosService();
+export default delosService;

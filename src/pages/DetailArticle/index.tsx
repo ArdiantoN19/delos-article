@@ -1,15 +1,10 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useState } from "react";
 import { getLocalStorage } from "../../utils";
 import DetailArticle from "../../components/fragments/DetailArticle";
 import { useParams } from "react-router-dom";
 import { TArticle } from "../../types/article";
 import useFirstRender from "../../hooks/useFirstRender";
+import Container from "../../components/ui/Container";
 
 const DetailArticlePage: React.FC = () => {
   const articles: TArticle[] = getLocalStorage("articles");
@@ -32,11 +27,11 @@ const DetailArticlePage: React.FC = () => {
   useFirstRender(findArticle);
 
   if (error) {
-    return <p>{error}</p>;
+    return <Container>{error}</Container>;
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Container>Loading...</Container>;
   }
   return <DetailArticle {...article} />;
 };

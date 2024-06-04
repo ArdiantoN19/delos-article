@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Hero from "../../components/fragments/Hero";
 import Container from "../../components/ui/Container";
 import Article from "../../components/fragments/Article";
@@ -6,7 +6,8 @@ import ArticleContext from "../../contexts/Article";
 import { TArticle } from "../../types/article";
 import useFetch from "../../hooks/useFetch";
 import { getArticleByFilter } from "../../utils/api";
-import { addArticles } from "../../services";
+import delosService from "../../services";
+import useFirstRender from "../../hooks/useFirstRender";
 
 const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<TArticle[]>([]);
@@ -15,10 +16,12 @@ const HomePage: React.FC = () => {
   ]);
   const [hasLoading, setHasLoading] = useState<boolean>(false);
 
-  useEffect(() => {
+  const setData = useCallback(() => {
     setArticles(!isLoading ? data : []);
-    addArticles(!isLoading ? data : []);
+    delosService.addArticles(!isLoading ? data : []);
   }, [data, isLoading]);
+
+  useFirstRender(setData);
 
   const value = useMemo(
     () => ({

@@ -7,7 +7,7 @@ import { createObjQuery } from "../../../utils";
 import ArticleContext from "../../../contexts/Article";
 import { getArticleByFilter } from "../../../utils/api";
 import { TFilter } from "../../../types/api";
-import { addArticles } from "../../../services";
+import delosService from "../../../services";
 
 const StyledWrapperFilter = styled.div`
     display: flex;
@@ -45,7 +45,7 @@ const FilterArticle: React.FC = () => {
           filter === "all" ? "emailed" : (filter as TFilter)
         );
         setArticles(articles.data);
-        addArticles(articles.data);
+        delosService.addArticles(articles.data);
         setHasLoading(false);
       }
     })();
