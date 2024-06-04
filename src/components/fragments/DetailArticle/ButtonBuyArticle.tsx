@@ -1,37 +1,8 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-
-import Button from "../../ui/Button";
-import { COLORS, SIZES } from "../../../constants";
 import MainContext from "../../../contexts/Main";
 import delosService from "../../../services";
 import { TAddMyArticle } from "../../../types/service";
-import Link from "../../ui/Link";
-
-const StyledBuyArticle = styled(Button)`
-  color: ${COLORS.orange};
-  background-color: ${COLORS.primary};
-  border-color: ${COLORS.orange};
-  width: 80px;
-
-  &:hover {
-    background-color: ${COLORS.orange};
-    color: ${COLORS.primary};
-  }
-`;
-
-const StyledShowMoreArticle = styled(Link)`
-  color: ${COLORS.orange};
-  background-color: ${COLORS.primary};
-  border: 1px solid ${COLORS.orange};
-  border-radius: ${SIZES.xs};
-  font-size: ${SIZES.sm};
-
-  &:hover {
-    background-color: ${COLORS.orange};
-    color: ${COLORS.primary};
-  }
-`;
+import { StyledBuyButton } from "./styles";
 
 interface IButtonBuyArticle {
   price: number;
@@ -69,17 +40,19 @@ const ButtonBuyArticle: React.FC<IButtonBuyArticle> = ({ url, price, id }) => {
   return (
     <div>
       {checkArticleIsBuy ? (
-        <StyledShowMoreArticle
+        <StyledBuyButton.StyledShowMoreArticle
           to={url}
           target="_blank"
           rel="noopener noreferrer"
         >
           Read more Article
-        </StyledShowMoreArticle>
+        </StyledBuyButton.StyledShowMoreArticle>
       ) : (
-        <StyledBuyArticle onClick={() => onBuyArticleHandler(id)}>
+        <StyledBuyButton.StyledBuyArticle
+          onClick={() => onBuyArticleHandler(id)}
+        >
           Buy
-        </StyledBuyArticle>
+        </StyledBuyButton.StyledBuyArticle>
       )}
     </div>
   );

@@ -41,3 +41,13 @@ export const setLocalStorage = <T>(key: string, value: T) => {
   checkSupportLocalStorage();
   localStorage.setItem(key, JSON.stringify(value));
 };
+
+export const showArticles = <T>(
+  articles: T[],
+  offset: number = 0,
+  limit: number = 6
+) => {
+  const copyArticles = [...articles];
+  const startIndex: number = offset * limit;
+  return copyArticles.slice(startIndex, startIndex + limit);
+};

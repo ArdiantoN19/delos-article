@@ -54,11 +54,11 @@ class DelosService implements IDelosServiceService<TArticle> {
   }
 
   addArticles(articles: TArticle[]) {
-    const localArticles: TArticle[] | null = getLocalStorage(
+    const localArticles: TArticle[] = getLocalStorage(
       this.VITE_ARTICLE_STORAGE_KEY
     );
 
-    if (!localArticles) {
+    if (!localArticles?.length) {
       setLocalStorage<TArticle[]>(this.VITE_ARTICLE_STORAGE_KEY, articles);
       return;
     }

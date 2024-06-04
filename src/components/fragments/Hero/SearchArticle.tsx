@@ -1,25 +1,9 @@
 import React, { useCallback } from "react";
 import Input from "../../ui/Input";
-import styled from "styled-components";
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { COLORS, SIZES } from "../../../constants";
 import { useSearchParams } from "react-router-dom";
 import { createObjQuery } from "../../../utils";
-
-const StyledSearchArticle = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 550px;
-
-  & > .icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: ${SIZES.xs};
-    background-color: ${COLORS.primary};
-    width: 30px;
-  }
-`;
+import { StyledSearchArticle } from "./styles";
 
 const SearchArticle: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,6 +1,4 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import styled from "styled-components";
-import { SIZES } from "../../../constants";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
 import { createObjQuery, getLocalStorage } from "../../../utils";
@@ -9,17 +7,7 @@ import { getArticleByFilter } from "../../../utils/api";
 import { TFilter } from "../../../types/api";
 import delosService from "../../../services";
 import { TArticle } from "../../../types/article";
-
-const StyledWrapperFilter = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${SIZES.xs};
-  margin-bottom: ${SIZES["xl"]};
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: ${SIZES["3xl"]};
-  }
-`;
+import { StyledWrapperFilter } from "./styles";
 
 const FilterValues: string[] = ["all", "emailed", "shared", "viewed"];
 

@@ -7,7 +7,11 @@ import { TArticle } from "../../types/article";
 import useFetch from "../../hooks/useFetch";
 import { getArticleByFilter } from "../../utils/api";
 import delosService from "../../services";
-import useFirstRender from "../../hooks/useFirstRender";
+import { getLocalStorage } from "../../utils";
+
+const localArticles: TArticle[] = getLocalStorage(
+  import.meta.env.VITE_ARTICLE_STORAGE_KEY
+);
 
 const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<TArticle[]>([]);
@@ -19,11 +23,15 @@ const HomePage: React.FC = () => {
   const [hasLoading, setHasLoading] = useState<boolean>(false);
 
   const setData = useCallback(() => {
-    setArticles(!isLoading ? data : []);
-    delosService.addArticles(!isLoading ? data : []);
-  }, [data, isLoading]);
+    if (!isLoading) {
+      setArticles(!localArticles?.length ? data : localArticles || []);
+      delosService.addArticles(data);
+    }
+  }, [isLoading, data]);
 
-  useFirstRender(setData);
+  useEffect(() => {
+    setData();
+  }, [setData]);
 
   const value = useMemo(
     () => ({
