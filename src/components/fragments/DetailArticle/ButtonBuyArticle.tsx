@@ -51,7 +51,7 @@ const ButtonBuyArticle: React.FC<IButtonBuyArticle> = ({ url, price, id }) => {
       alert("Your free article limit reached");
       return;
     }
-    if (dataDelos.coins > price) {
+    if (dataDelos.coins >= price) {
       const payload: TAddMyArticle = { id, isFree: price === 0, price };
       delosService.addMyArticle(payload);
 
