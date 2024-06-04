@@ -13,6 +13,8 @@ const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<TArticle[]>([]);
   const [data, isLoading, error] = useFetch<TArticle[]>([
     getArticleByFilter("emailed"),
+    getArticleByFilter("shared"),
+    getArticleByFilter("viewed"),
   ]);
   const [hasLoading, setHasLoading] = useState<boolean>(false);
 

@@ -1,13 +1,14 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { SIZES } from "../../../constants";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
-import { createObjQuery } from "../../../utils";
+import { createObjQuery, getLocalStorage } from "../../../utils";
 import ArticleContext from "../../../contexts/Article";
 import { getArticleByFilter } from "../../../utils/api";
 import { TFilter } from "../../../types/api";
 import delosService from "../../../services";
+import { TArticle } from "../../../types/article";
 
 const StyledWrapperFilter = styled.div`
     display: flex;
@@ -27,6 +28,7 @@ const FilterArticle: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams({
     filter: FilterValues[0],
   });
+  const [error, setError] = useState<string>("");
   const queryParams = createObjQuery(searchParams);
   const filter = searchParams.get("filter");
 
@@ -39,30 +41,46 @@ const FilterArticle: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      if (filter) {
-        setHasLoading(true);
-        const articles = await getArticleByFilter(
-          filter === "all" ? "emailed" : (filter as TFilter)
-        );
-        setArticles(articles.data);
-        delosService.addArticles(articles.data);
+      setHasLoading(true);
+      try {
+        let articles: TArticle[] = [];
+        if (filter && filter !== FilterValues[0]) {
+          const response = await getArticleByFilter(filter as TFilter);
+          if (response.status !== "success") {
+            throw new Error(response.error);
+          }
+          articles = response.data;
+        }
+
+        if (filter === "all") {
+          articles = getLocalStorage("articles");
+        }
+
+        setArticles(articles);
+        delosService.addArticles(articles);
+      } catch (error) {
+        setError("something went wrong");
+      } finally {
         setHasLoading(false);
       }
     })();
   }, [filter, setArticles, setHasLoading]);
 
   return (
-    <StyledWrapperFilter>
-      {FilterValues.map((filter, index) => (
-        <Button
-          className={searchParams.get("filter") === filter ? "active" : ""}
-          onClick={() => onFilterHandler(filter)}
-          key={filter + index}
-        >
-          {filter}
-        </Button>
-      ))}
-    </StyledWrapperFilter>
+    <>
+      <StyledWrapperFilter>
+        {FilterValues.map((filter, index) => (
+          <Button
+            className={searchParams.get("filter") === filter ? "active" : ""}
+            onClick={() => onFilterHandler(filter)}
+            key={filter + index}
+          >
+            {filter}
+          </Button>
+        ))}
+      </StyledWrapperFilter>
+      {error && <p>{error}</p>}
+    </>
   );
 };
 
