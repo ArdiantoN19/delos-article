@@ -7,7 +7,9 @@ import useFirstRender from "../../hooks/useFirstRender";
 import Container from "../../components/ui/Container";
 
 const DetailArticlePage: React.FC = () => {
-  const articles: TArticle[] = getLocalStorage("articles");
+  const articles: TArticle[] = getLocalStorage(
+    import.meta.env.VITE_ARTICLE_STORAGE_KEY
+  );
   const [article, setArticle] = useState<TArticle>({} as TArticle);
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
