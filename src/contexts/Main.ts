@@ -6,7 +6,7 @@ interface IMainProps {
 }
 
 const MainContext = createContext<IMainProps>({
-  coins: 100000,
+  coins: 0,
   setCoins: () => {},
 });
 

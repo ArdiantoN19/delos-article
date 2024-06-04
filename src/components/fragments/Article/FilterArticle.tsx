@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { SIZES } from "../../../constants";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
-import { createObjQuery, setLocalStorage } from "../../../utils";
+import { createObjQuery } from "../../../utils";
 import ArticleContext from "../../../contexts/Article";
 import { getArticleByFilter } from "../../../utils/api";
 import { TFilter } from "../../../types/api";
-import { TArticle } from "../../../types/article";
+import { addArticles } from "../../../services";
 
 const StyledWrapperFilter = styled.div`
     display: flex;
@@ -45,7 +45,7 @@ const FilterArticle: React.FC = () => {
           filter === "all" ? "emailed" : (filter as TFilter)
         );
         setArticles(articles.data);
-        setLocalStorage<TArticle[]>("articles", articles.data);
+        addArticles(articles.data);
         setHasLoading(false);
       }
     })();

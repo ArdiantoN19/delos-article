@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Container from "../../ui/Container";
 import { COLORS, SHADOWS, SIZES } from "../../../constants";
 import Badge from "../../ui/Badge";
-import Button from "../../ui/Button";
 import { TArticle } from "../../../types/article";
 import { dayFormatter, generateCoins } from "../../../utils";
+import ButtonBuyArticle from "./ButtonBuyArticle";
 
 const StyledDetailArticle = styled(Container)`
   max-width: 800px;
@@ -89,18 +89,6 @@ const StyledDetailArticleBodyInfo = styled.div`
   }
 `;
 
-const StyledBuyArticle = styled(Button)`
-  color: ${COLORS.orange};
-  background-color: ${COLORS.primary};
-  border-color: ${COLORS.orange};
-  width: 80px;
-
-  &:hover {
-    background-color: ${COLORS.orange};
-    color: ${COLORS.primary};
-  }
-`;
-
 const StyledDetailArticleBodyDescription = styled.p`
   font-size: ${SIZES.sm};
   text-align: justify;
@@ -109,6 +97,7 @@ const StyledDetailArticleBodyDescription = styled.p`
 interface IDetailArticle extends TArticle {}
 
 const DetailArticle: React.FC<IDetailArticle> = ({
+  id,
   title,
   media,
   section,
@@ -149,9 +138,7 @@ const DetailArticle: React.FC<IDetailArticle> = ({
             </div>
             <h4 className="coins">{coins === 0 ? "Free" : `${coins} Coins`}</h4>
           </StyledDetailArticleBodyInfo>
-          <div>
-            <StyledBuyArticle>Buy</StyledBuyArticle>
-          </div>
+          <ButtonBuyArticle price={coins} id={id} />
         </StyledDetailArticleBodyInfoWrapper>
         <StyledDetailArticleBodyDescription>
           {abstract}

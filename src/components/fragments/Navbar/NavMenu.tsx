@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Link from "../../ui/Link";
 import { COLORS, SIZES } from "../../../constants";
-import { List, X } from "@phosphor-icons/react";
+import { Coin, List, X } from "@phosphor-icons/react";
 import Button from "../../ui/Button";
+import MainContext from "../../../contexts/Main";
 
 const StyledNavMenu = styled.div<{ $isShow: boolean }>`
   display: flex;
@@ -48,7 +49,17 @@ const StyledNavToggler = styled(Button)`
   }
 `;
 
+const StyledCoins = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: ${COLORS.orange};
+  font-weight: bold;
+`;
+
 const NavMenu: React.FC = () => {
+  const { coins } = useContext(MainContext);
+
   const [isShow, setIsShow] = React.useState<boolean>(false);
   const onIsShowHandler = () => {
     setIsShow((prev) => !prev);
@@ -59,6 +70,10 @@ const NavMenu: React.FC = () => {
       <StyledNavMenu $isShow={isShow}>
         <Link to="/">Home</Link>
         <Link to="/lucky">Lucky</Link>
+        <StyledCoins>
+          <Coin size={24} />
+          {coins}
+        </StyledCoins>
       </StyledNavMenu>
       <StyledNavToggler onClick={onIsShowHandler}>
         {isShow ? <X size={24} /> : <List size={24} />}
