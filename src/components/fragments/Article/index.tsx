@@ -8,11 +8,11 @@ import { TArticle } from "@/types/article";
 import { getLocalStorage, showArticles } from "@/utils";
 import { StyledArticle } from "./styles";
 
-const localArticles: TArticle[] = getLocalStorage(
-  process.env.VITE_ARTICLE_STORAGE_KEY!
-);
-
 const Article: React.FC = () => {
+  const localArticles: TArticle[] = getLocalStorage(
+    process.env.VITE_ARTICLE_STORAGE_KEY!
+  );
+
   const { articles, isLoading, error, hasLoading } = useContext(ArticleContext);
   const [searchParams] = useSearchParams();
   const [datas, setDatas] = useState<TArticle[]>([]);
@@ -53,7 +53,7 @@ const Article: React.FC = () => {
       setDatas((prev) => [...prev, ...result]);
       setOffset((prev) => prev + 1);
     }
-  }, [offset, search]);
+  }, [offset, search, localArticles]);
 
   return (
     <InfiniteScroll
