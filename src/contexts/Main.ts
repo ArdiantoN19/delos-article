@@ -7,6 +7,7 @@ interface IMainProps<TMyArticle, TLuckyDraw> {
   setDataDelos: React.Dispatch<
     React.SetStateAction<IDataDelos<TMyArticle, TLuckyDraw>>
   >;
+  isLoading: boolean;
 }
 
 const MainContext = createContext<IMainProps<TMyArticle, TLuckyDraw>>({
@@ -19,6 +20,7 @@ const MainContext = createContext<IMainProps<TMyArticle, TLuckyDraw>>({
     },
   },
   setDataDelos: () => {},
+  isLoading: true,
 });
 
 export default MainContext;

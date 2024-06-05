@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Coin, List, X } from "@phosphor-icons/react";
 import Link from "@/components/ui/Link";
 import MainContext from "@/contexts/Main";
 import { StyledNavMenu } from "./styles";
 
 const NavMenu: React.FC = () => {
-  const { dataDelos } = useContext(MainContext);
-
-  const [isShow, setIsShow] = React.useState<boolean>(false);
+  const { dataDelos, isLoading } = useContext(MainContext);
+  const [isShow, setIsShow] = useState<boolean>(false);
   const onIsShowHandler = () => {
     setIsShow((prev) => !prev);
   };
@@ -19,7 +18,7 @@ const NavMenu: React.FC = () => {
         <Link to="/lucky">Lucky</Link>
         <StyledNavMenu.StyledCoins>
           <Coin size={24} />
-          {dataDelos.coins}
+          {isLoading ? "000" : dataDelos?.coins || 100000}
         </StyledNavMenu.StyledCoins>
       </StyledNavMenu.StyledNavMenu>
       <StyledNavMenu.StyledNavToggler onClick={onIsShowHandler}>

@@ -17,14 +17,19 @@ const MainLayout: React.FC = () => {
       logs: [],
     },
   });
-
-  const value = useMemo(() => ({ dataDelos, setDataDelos }), [dataDelos]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const localDataDelos: IDataDelos<TMyArticle, TLuckyDraw> =
       delosService.getDataDelos();
     setDataDelos(localDataDelos);
+    setIsLoading(false);
   }, []);
+
+  const value = useMemo(
+    () => ({ dataDelos, setDataDelos, isLoading }),
+    [dataDelos, isLoading]
+  );
 
   return (
     <MainContext.Provider value={value}>
