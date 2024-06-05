@@ -18,7 +18,7 @@ const NavMenu: React.FC = () => {
         <Link to="/lucky">Lucky</Link>
         <StyledNavMenu.StyledCoins>
           <Coin size={24} />
-          {isLoading ? "000" : dataDelos?.coins || 100000}
+          {isLoading ? "100000" : dataDelos?.coins}
         </StyledNavMenu.StyledCoins>
       </StyledNavMenu.StyledNavMenu>
       <StyledNavMenu.StyledNavToggler onClick={onIsShowHandler}>
