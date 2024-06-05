@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { StyledAvatar, StyledButtonLuckyDraw } from "./styles";
-import Loader from "../../ui/Loader";
-import { getLuckyDraw } from "../../../utils";
-import MainContext from "../../../contexts/Main";
-import { TLog, TResultLog } from "../../../types/service";
-import delosService from "../../../services";
+import Loader from "@/components/ui/Loader";
+import { getLuckyDraw } from "@/utils";
+import MainContext from "@/contexts/Main";
+import { TLog, TResultLog } from "@/types/service";
+import delosService from "@/services";
 
 const ButtonLuckyDraw: React.FC = () => {
   const { dataDelos, setDataDelos } = useContext(MainContext);

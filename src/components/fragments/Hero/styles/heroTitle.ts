@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SIZES } from "../../../../constants";
+import { SIZES } from "@/constants";
 
 export const StyledHeroTitle = styled.h1`
   font-size: ${SIZES["3xl"]};

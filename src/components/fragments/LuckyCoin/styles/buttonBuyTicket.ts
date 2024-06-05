@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../../../constants";
-import Button from "../../../ui/Button";
+import { COLORS, SIZES } from "@/constants";
+import Button from "@/components/ui/Button";
 
 export const StyledButtonBuyTicket = styled(Button)`
   color: ${COLORS.primary};

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Link from "../../ui/Link";
 import { Coin, List, X } from "@phosphor-icons/react";
-import MainContext from "../../../contexts/Main";
+import Link from "@/components/ui/Link";
+import MainContext from "@/contexts/Main";
 import { StyledNavMenu } from "./styles";
 
 const NavMenu: React.FC = () => {

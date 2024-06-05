@@ -1,5 +1,5 @@
 import React from "react";
-import LuckyCoin from "../../components/fragments/LuckyCoin";
+import LuckyCoin from "@/components/fragments/LuckyCoin";
 
 const LuckyPage: React.FC = () => {
   return <LuckyCoin />;

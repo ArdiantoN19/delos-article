@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SIZES } from "../../../../constants";
+import { SIZES } from "@/constants";
 
 export const StyledArticle = styled.div`
   margin-bottom: ${SIZES["3xl"]};

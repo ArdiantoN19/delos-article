@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
-import Input from "../../ui/Input";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useSearchParams } from "react-router-dom";
-import { createObjQuery } from "../../../utils";
+import Input from "@/components/ui/Input";
+import { createObjQuery } from "@/utils";
 import { StyledSearchArticle } from "./styles";
 
 const SearchArticle: React.FC = () => {

@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Navbar from "../fragments/Navbar";
+import Navbar from "@/components/fragments/Navbar";
 import { Outlet } from "react-router-dom";
-import MainContext from "../../contexts/Main";
-import { IDataDelos } from "../../types/main";
-import delosService from "../../services";
-import { TLuckyDraw, TMyArticle } from "../../types/service";
+import MainContext from "@/contexts/Main";
+import { IDataDelos } from "@/types/main";
+import delosService from "@/services";
+import { TLuckyDraw, TMyArticle } from "@/types/service";
 
 const MainLayout: React.FC = () => {
   const [dataDelos, setDataDelos] = useState<

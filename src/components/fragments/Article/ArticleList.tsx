@@ -1,6 +1,6 @@
 import React from "react";
 import ArticleItem from "./ArticleItem";
-import { TArticle } from "../../../types/article";
+import { TArticle } from "@/types/article";
 import { StyledArticleList } from "./styles";
 
 const ArticleList: React.FC<{ articles: TArticle[] }> = ({ articles }) => {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CONTAINER } from "../../constants";
+import { CONTAINER } from "@/constants";
 import React, { HTMLAttributes } from "react";
 
 const StyledContainer = styled.div`

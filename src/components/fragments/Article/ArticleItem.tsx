@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import Card from "../../ui/Card";
-import { TArticle } from "../../../types/article";
-import { dayFormatter, generateCoins } from "../../../utils";
-import Badge from "../../ui/Badge";
+import Card from "@/components/ui/Card";
+import { TArticle } from "@/types/article";
+import { dayFormatter, generateCoins } from "@/utils";
+import Badge from "@/components/ui/Badge";
 import { StyledArticleItem } from "./styles";
 
 interface IArticleItem extends TArticle {

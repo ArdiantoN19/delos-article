@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
-import { IDataDelos } from "../types/main";
-import { TLuckyDraw, TMyArticle } from "../types/service";
+import { IDataDelos } from "@/types/main";
+import { TLuckyDraw, TMyArticle } from "@/types/service";
 
 interface IMainProps<TMyArticle, TLuckyDraw> {
   dataDelos: IDataDelos<TMyArticle, TLuckyDraw>;

@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import Button from "../../ui/Button";
+import Button from "@/components/ui/Button";
 import { useSearchParams } from "react-router-dom";
-import { createObjQuery, getLocalStorage } from "../../../utils";
-import ArticleContext from "../../../contexts/Article";
-import { getArticleByFilter } from "../../../utils/api";
-import { TFilter } from "../../../types/api";
-import delosService from "../../../services";
-import { TArticle } from "../../../types/article";
+import { createObjQuery, getLocalStorage } from "@/utils";
+import ArticleContext from "@/contexts/Article";
+import { getArticleByFilter } from "@/utils/api";
+import { TFilter } from "@/types/api";
+import delosService from "@/services";
+import { TArticle } from "@/types/article";
 import { StyledWrapperFilter } from "./styles";
 
 const FilterValues: string[] = ["all", "emailed", "shared", "viewed"];

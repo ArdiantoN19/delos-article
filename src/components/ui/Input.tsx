@@ -1,6 +1,6 @@
 import React, { HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 import styled from "styled-components";
-import { COLORS, SHADOWS, SIZES } from "../../constants";
+import { COLORS, SHADOWS, SIZES } from "@/constants";
 
 const StyledInput = styled.input.attrs<{ $type?: HTMLInputTypeAttribute }>(
   (props) => ({

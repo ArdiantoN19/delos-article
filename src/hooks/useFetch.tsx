@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { IResponseApi } from "../types/api";
+import { IResponseApi } from "@/types/api";
 import useFirstRender from "./useFirstRender";
 
 function useFetch<T>(

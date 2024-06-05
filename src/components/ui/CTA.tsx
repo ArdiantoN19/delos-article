@@ -1,6 +1,6 @@
 import React, { AnchorHTMLAttributes } from "react";
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../constants";
+import { COLORS, SIZES } from "@/constants";
 import { ArrowDown } from "@phosphor-icons/react";
 
 const StyledCTA = styled.a`

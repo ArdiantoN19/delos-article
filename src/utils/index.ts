@@ -1,5 +1,5 @@
-import { IDataDelos } from "../types/main";
-import { TLog, TLuckyDraw, TMyArticle, TResultLog } from "../types/service";
+import { IDataDelos } from "@/types/main";
+import { TLog, TLuckyDraw, TMyArticle, TResultLog } from "@/types/service";
 
 export const createObjQuery = (searchParams: URLSearchParams) => {
   return Object.fromEntries(searchParams.entries());

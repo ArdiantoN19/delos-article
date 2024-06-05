@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../constants";
+import { COLORS, SIZES } from "@/constants";
 
 const StyledBadge = styled.div`
   background-color: ${COLORS.orange};

@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
-import { SIZES } from "../../constants";
+import { SIZES } from "@/constants";
 
 const StyledCard = styled.div`
   width: 100%;

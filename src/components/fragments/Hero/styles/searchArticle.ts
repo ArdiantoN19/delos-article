@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../../../constants";
+import { COLORS, SIZES } from "@/constants";
 
 export const StyledSearchArticle = styled.div`
   position: relative;

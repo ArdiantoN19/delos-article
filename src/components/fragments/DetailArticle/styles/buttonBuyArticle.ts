@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
-import Button from "../../../ui/Button";
-import { COLORS, SIZES } from "../../../../constants";
-import Link from "../../../ui/Link";
+import Button from "@/components/ui/Button";
+import { COLORS, SIZES } from "@/constants";
+import Link from "@/components/ui/Link";
 
 export const StyledBuyArticle = styled(Button)`
   color: ${COLORS.orange};

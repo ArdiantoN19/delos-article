@@ -1,7 +1,7 @@
 import React from "react";
 import NavBrand from "./NavBrand";
 import NavMenu from "./NavMenu";
-import Container from "../../ui/Container";
+import Container from "@/components/ui/Container";
 import { StyledNav } from "./styles";
 
 const Navbar: React.FC = () => {

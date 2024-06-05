@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Container from "../../ui/Container";
+import Container from "@/components/ui/Container";
 import { StyledLuckyCoin } from "./styles";
 import ButtonBuyTicket from "./ButtonBuyTicket";
-import MainContext from "../../../contexts/Main";
+import MainContext from "@/contexts/Main";
 import ButtonLuckyDraw from "./ButtonLuckyDraw";
 
 const LuckyCoin: React.FC = () => {

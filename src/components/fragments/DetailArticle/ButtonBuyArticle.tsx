@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import MainContext from "../../../contexts/Main";
-import delosService from "../../../services";
-import { TAddMyArticle } from "../../../types/service";
+import MainContext from "@/contexts/Main";
+import delosService from "@/services";
+import { TAddMyArticle } from "@/types/service";
 import { StyledBuyButton } from "./styles";
 
 interface IButtonBuyArticle {

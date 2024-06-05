@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { StyledButtonBuyTicket } from "./styles";
-import MainContext from "../../../contexts/Main";
-import delosService from "../../../services";
+import MainContext from "@/contexts/Main";
+import delosService from "@/services";
 
 const PRICE_TICKET: number = 50000;
 const INITIAL_TICKET: number = 3;

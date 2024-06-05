@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SIZES } from "../../../../constants";
+import { SIZES } from "@/constants";
 
 export const StyledWrapperFilter = styled.div`
   display: flex;

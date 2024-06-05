@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Container from "../../../ui/Container";
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
-import Badge from "../../../ui/Badge";
+import Container from "@/components/ui/Container";
+import { COLORS, SHADOWS, SIZES } from "@/constants";
+import Badge from "@/components/ui/Badge";
 
 export const StyledDetailArticle = styled(Container)`
   max-width: 800px;

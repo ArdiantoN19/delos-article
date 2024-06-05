@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { TArticle } from "../types/article";
+import { TArticle } from "@/types/article";
 
 interface ArticleContextProps {
   articles: TArticle[];

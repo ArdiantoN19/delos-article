@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Hero from "../../components/fragments/Hero";
-import Container from "../../components/ui/Container";
-import Article from "../../components/fragments/Article";
-import ArticleContext from "../../contexts/Article";
-import { TArticle } from "../../types/article";
-import useFetch from "../../hooks/useFetch";
-import { getArticleByFilter } from "../../utils/api";
-import delosService from "../../services";
-import { getLocalStorage } from "../../utils";
+import Hero from "@/components/fragments/Hero";
+import Container from "@/components/ui/Container";
+import Article from "@/components/fragments/Article";
+import ArticleContext from "@/contexts/Article";
+import { TArticle } from "@/types/article";
+import useFetch from "@/hooks/useFetch";
+import { getArticleByFilter } from "@/utils/api";
+import delosService from "@/services";
+import { getLocalStorage } from "@/utils";
 
 const localArticles: TArticle[] = getLocalStorage(
   import.meta.env.VITE_ARTICLE_STORAGE_KEY

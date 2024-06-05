@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, FONTS, SIZES } from "../../../../constants";
+import { COLORS, FONTS, SIZES } from "@/constants";
 
 export const StyledNavBrand = styled(Link)`
   font-family: ${FONTS.bold};

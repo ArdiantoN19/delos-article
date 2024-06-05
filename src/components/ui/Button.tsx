@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../constants";
+import { COLORS, SIZES } from "@/constants";
 
 type TButtonType = ButtonHTMLAttributes<HTMLButtonElement>["type"];
 

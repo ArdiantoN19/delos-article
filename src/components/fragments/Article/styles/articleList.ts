@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SIZES } from "../../../../constants";
+import { SIZES } from "@/constants";
 
 export const StyledArticleList = styled.div`
   display: grid;

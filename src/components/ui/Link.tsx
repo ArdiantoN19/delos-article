@@ -1,6 +1,6 @@
-import { COLORS, SIZES } from "../../constants";
 import { NavLink as LinkRouter, NavLinkProps } from "react-router-dom";
 import styled from "styled-components";
+import { COLORS, SIZES } from "@/constants";
 
 const SyledLink = styled(LinkRouter)`
   color: ${COLORS.gray};

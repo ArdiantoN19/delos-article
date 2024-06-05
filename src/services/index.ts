@@ -1,12 +1,12 @@
-import { TArticle } from "../types/article";
+import { TArticle } from "@/types/article";
 import {
   IDelosServiceService,
   TAddMyArticle,
   TLog,
   TLuckyDraw,
   TMyArticle,
-} from "../types/service";
-import { getLocalStorage, setLocalStorage } from "../utils";
+} from "@/types/service";
+import { getLocalStorage, setLocalStorage } from "@/utils";
 
 const concatArticlesWithoutDuplicates = (
   article1: TArticle[],

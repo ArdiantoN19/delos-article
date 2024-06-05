@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
-
-import { TArticle } from "../../../types/article";
-import { dayFormatter, generateCoins } from "../../../utils";
+import { TArticle } from "@/types/article";
+import { dayFormatter, generateCoins } from "@/utils";
 import ButtonBuyArticle from "./ButtonBuyArticle";
 import { StyledDetailArticle } from "./styles";
 

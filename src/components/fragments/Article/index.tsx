@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useSearchParams } from "react-router-dom";
 import FilterArticle from "./FilterArticle";
 import ArticleList from "./ArticleList";
-import ArticleContext from "../../../contexts/Article";
-import { useSearchParams } from "react-router-dom";
-import { TArticle } from "../../../types/article";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { getLocalStorage, showArticles } from "../../../utils";
+import ArticleContext from "@/contexts/Article";
+import { TArticle } from "@/types/article";
+import { getLocalStorage, showArticles } from "@/utils";
 import { StyledArticle } from "./styles";
 
 const localArticles: TArticle[] = getLocalStorage(

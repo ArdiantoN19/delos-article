@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS, SIZES } from "../../../../constants";
+import { COLORS, SIZES } from "@/constants";
 import { StyledButtonBuyTicket } from "./buttonBuyTicket";
 
 export const StyledAvatar = styled.img`

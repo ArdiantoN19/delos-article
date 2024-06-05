@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
-import Link from "../../../ui/Link";
+import { COLORS, SHADOWS, SIZES } from "@/constants";
+import Link from "@/components/ui/Link";
 
 export const StyledImage = styled.img`
   width: 230px;

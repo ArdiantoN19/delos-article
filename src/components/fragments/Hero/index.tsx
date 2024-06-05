@@ -1,7 +1,7 @@
 import React from "react";
 import HeroTitle from "./HeroTitle";
 import SearchArticle from "./SearchArticle";
-import Cta from "../../ui/CTA";
+import Cta from "@/components/ui/CTA";
 import { StyledHero } from "./styles";
 
 const Hero: React.FC = () => {
