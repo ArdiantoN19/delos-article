@@ -17,7 +17,7 @@ const StyledLoader = styled.div`
 
 const Loader: React.FC<{ size?: number }> = ({ size = 20 }) => {
   return (
-    <StyledLoader>
+    <StyledLoader title="loader">
       <Circle size={size} />
     </StyledLoader>
   );

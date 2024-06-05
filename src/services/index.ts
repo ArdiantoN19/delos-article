@@ -39,9 +39,8 @@ class DelosService implements IDelosServiceService<TArticle> {
       tickets: 0,
       logs: [],
     };
-    this.VITE_ARTICLE_STORAGE_KEY = import.meta.env.VITE_ARTICLE_STORAGE_KEY;
-    this.VITE_MAIN_DELOS_STORAGE_KEY =
-      import.meta.env.VITE_MAIN_DELOS_STORAGE_KEY;
+    this.VITE_ARTICLE_STORAGE_KEY = process.env.VITE_ARTICLE_STORAGE_KEY!;
+    this.VITE_MAIN_DELOS_STORAGE_KEY = process.env.VITE_MAIN_DELOS_STORAGE_KEY!;
   }
 
   setInitialDataDelos() {

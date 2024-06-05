@@ -41,7 +41,7 @@ const FilterArticle: React.FC = () => {
         }
 
         if (filter === "all") {
-          articles = getLocalStorage(import.meta.env.VITE_ARTICLE_STORAGE_KEY);
+          articles = getLocalStorage(process.env.VITE_ARTICLE_STORAGE_KEY!);
         }
 
         setArticles(articles);

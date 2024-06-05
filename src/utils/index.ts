@@ -68,7 +68,7 @@ const generateRandomString = () => {
 
 const generateRandomAvatar = () => {
   const randomString = generateRandomString();
-  return `${import.meta.env.VITE_AVATAR_API_URL}?seed=${randomString}`;
+  return `${process.env.VITE_AVATAR_API_URL}?seed=${randomString}`;
 };
 
 const checkIsGetHighLuckyValue = (

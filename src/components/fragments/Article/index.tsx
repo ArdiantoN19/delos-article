@@ -9,7 +9,7 @@ import { getLocalStorage, showArticles } from "@/utils";
 import { StyledArticle } from "./styles";
 
 const localArticles: TArticle[] = getLocalStorage(
-  import.meta.env.VITE_ARTICLE_STORAGE_KEY
+  process.env.VITE_ARTICLE_STORAGE_KEY!
 );
 
 const Article: React.FC = () => {

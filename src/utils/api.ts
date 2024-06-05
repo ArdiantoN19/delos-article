@@ -1,8 +1,8 @@
 import { IResponseApi, TFilter } from "@/types/api";
 import { TArticle } from "@/types/article";
 
-const API_BASE_URL = import.meta.env.VITE_NYT_API_BASE_URL;
-const API_KEY = import.meta.env.VITE_NYT_API_KEY;
+const API_BASE_URL = process.env.VITE_NYT_API_BASE_URL;
+const API_KEY = process.env.VITE_NYT_API_KEY;
 
 export const getArticleByFilter = async (
   filter: TFilter

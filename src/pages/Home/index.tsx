@@ -10,7 +10,7 @@ import delosService from "@/services";
 import { getLocalStorage } from "@/utils";
 
 const localArticles: TArticle[] = getLocalStorage(
-  import.meta.env.VITE_ARTICLE_STORAGE_KEY
+  process.env.VITE_ARTICLE_STORAGE_KEY!
 );
 
 const HomePage: React.FC = () => {
