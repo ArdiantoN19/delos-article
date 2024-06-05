@@ -32,6 +32,7 @@ This repository contains a website that can display articles. The articles provi
 3. Create your own .env file can see the variabel in .env.example
 4. Run ** npm run dev **, to run application in development mode,
 
-### <a href="https://delos-article.netlify.app/" target="_blank" rel="noopener noreferrer">Live Code</a>
+### <a href="https://delos-article.netlify.app/" target="_blank" rel="noopener noreferrer">Live Site</a>
+### <a href="https://pagespeed.web.dev/analysis/https-delos-article-netlify-app/g5syrkvq3c?form_factor=desktop" target="_blank" rel="noopener noreferrer">Page Speed Report</a>
 
 Thank you, happy code :)
