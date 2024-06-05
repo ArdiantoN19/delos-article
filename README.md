@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains a website that can display articles. The articles provided are sourced from the NYT API
+This repository contains a website that can display articles. The articles provided are sourced from the NYT API.
 
 ## Features
 
@@ -11,7 +11,8 @@ This repository contains a website that can display articles. The articles provi
 - Can display a list of articles from the API
 - Can buy article
 - Infinite scroll
-- list of articles Article details
+- List of articles
+- Article details
 - Lucky page for luckydraw
 - Integrate with unit testing
 - etc.
@@ -30,5 +31,7 @@ This repository contains a website that can display articles. The articles provi
 2. run ** npm install **, to install all depedency in your terminal,
 3. Create your own .env file can see the variabel in .env.example
 4. Run ** npm run dev **, to run application in development mode,
+
+### <a href="https://delos-article.netlify.app/" target="_blank" rel="noopener noreferrer">Live Code</a>
 
 Thank you, happy code :)
