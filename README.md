@@ -10,7 +10,8 @@ This repository contains a website that can display articles. The articles provi
 - Uses local storage for data consistency
 - Can display a list of articles from the API
 - Can buy article
-- Infinite scroll list of articles Article details
+- Infinite scroll
+- list of articles Article details
 - Lucky page for luckydraw
 - Integrate with unit testing
 - etc.
