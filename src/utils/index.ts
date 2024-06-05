@@ -1,5 +1,5 @@
-import delosService from "../services";
-import { TLog, TResultLog } from "../types/service";
+import { IDataDelos } from "../types/main";
+import { TLog, TLuckyDraw, TMyArticle, TResultLog } from "../types/service";
 
 export const createObjQuery = (searchParams: URLSearchParams) => {
   return Object.fromEntries(searchParams.entries());
@@ -71,15 +71,18 @@ const generateRandomAvatar = () => {
   return `${import.meta.env.VITE_AVATAR_API_URL}?seed=${randomString}`;
 };
 
-const checkIsGetHighLuckyValue = () => {
-  const dataDelos = delosService.getDataDelos();
+const checkIsGetHighLuckyValue = (
+  dataDelos: IDataDelos<TMyArticle, TLuckyDraw>
+) => {
   return dataDelos.luckyDraw.logs.some((log: TLog) => {
     return log.result.value === 50000;
   });
 };
 
-export const getLuckyDraw = (): TResultLog => {
-  const isGetHighLuckyValue = checkIsGetHighLuckyValue();
+export const getLuckyDraw = (
+  dataDelos: IDataDelos<TMyArticle, TLuckyDraw>
+): TResultLog => {
+  const isGetHighLuckyValue = checkIsGetHighLuckyValue(dataDelos);
   const luckyValue: Record<string, number> = {
     "85": 50000,
   };

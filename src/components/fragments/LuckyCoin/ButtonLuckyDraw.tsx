@@ -25,7 +25,7 @@ const ButtonLuckyDraw: React.FC = () => {
 
   const onLuckyDrawHandler = useCallback(() => {
     if (dataDelos.luckyDraw.tickets > 0) {
-      const luckyDraw = getLuckyDraw();
+      const luckyDraw = getLuckyDraw(dataDelos);
       setIsStart(true);
       setDataLuckyDraw(luckyDraw);
 
